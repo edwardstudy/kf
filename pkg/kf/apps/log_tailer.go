@@ -114,6 +114,7 @@ func (t *pushLogTailer) handleWatch() (bool, error) {
 			continue
 		}
 
+		// TODO filter event
 		done, err := t.handleUpdate(app)
 		if err != nil {
 			return true, err
@@ -135,6 +136,7 @@ func (t *pushLogTailer) handleUpdate(
 		// source might still be creating
 		return false, nil
 	}
+	// TODO tail current resource
 	if sourceReady.Message != "" {
 		t.logger.Printf("Updated state to: %s\n", sourceReady.Message)
 	}
